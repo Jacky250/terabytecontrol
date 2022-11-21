@@ -28,8 +28,10 @@
                         <a href="{{ route('getinalmloc', $location->id) }}" class="btn btn-warning ">Nuevo</a>
                         <br>
                         @endcan
+                        <div class="table-responsive "> 
+
                         
-                        <table class="table table-striped  justify-content mt-2 ">
+                        <table class="table  justify-content mt-2 ">
                                 <thead style="background-color:#424242">
                                         <th style="display: none;">Id</th>
                                         <th style="color:#fff" >IP</th>
@@ -42,7 +44,9 @@
                                         <th style="color:#fff">Lugar</th>
                                         <th style="color:#fff">Switch</th>
                                         <th style="color:#fff">Puerto</th>
-                                        <th style="color:#fff">Acciones</th>
+                                        <th style="color:#fff">Editar</th>
+                                        <th style="color:#fff">Eliminar</th>
+                                        
                                 </thead>
                                 <tbody>
                             @foreach ($inalambricas as $inalambrica)
@@ -61,21 +65,24 @@
                                 <td>
                                     <form action="{{ route('inalambricas.destroy',$inalambrica->id) }}" method="POST">
                                         @can('editar-inalambrica')
-                                        <a class="btn btn-info" href="{{ route('inalambricas.edit',$inalambrica->id) }}">Editar</a>
+                                        <a class="btn btn-info"   href="{{ route('inalambricas.edit',$inalambrica->id) }}">Editar</a>
                                         @endcan
+                                        <td>
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('borrar-inalambrica')
+                                            <button type="submit" class="btn btn-danger"   onclick="return confirm('¿seguro que quieres eliminar {{ $inalambrica->router }}?')" > Borrar</button>
+                                            
+                                            @endcan
 
-                                        @csrf
-                                        @method('DELETE')
-                                        @can('borrar-inalambrica')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('¿seguro que quieres eliminar {{ $inalambrica->router }}?')" > Borrar</button>
-                                        
-                                        @endcan
+                                        </td>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                                 </tbody>
                         </table>
+                        </div>
                         <div class="pagination justify-content-end">
                                 {!! $inalambricas->links() !!}
                             </div>

@@ -14,13 +14,15 @@
                         @can ('crear-user')
                             <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>
                             @endcan
-                            <table class="table table-striped mt-1">
+                            <div class="table-responsive">
+                            <table class="table    justify-content mt-2">
                                 <thead style="background-color: #424242;">
                                     <th style="display: none;">ID</th>
                                     <th style="color: #fff;">Nombre</th>
                                     <th style="color: #fff;">E-mail</th>
                                     <th style="color: #fff;">Rol</th>
-                                    <th style="color: #fff;">Acciones</th>
+                                    <th style="color:#fff">Editar</th>
+                                        <th style="color:#fff">Eliminar</th>
                                 </thead>
                                 <tbody>
                                     @foreach($usuarios as $usuario)
@@ -39,17 +41,19 @@
                                                 @can('editar-user')
                                                 <a class="btn btn-info" href="{{ route('usuarios.edit', $usuario->id) }}">Editar</a>
                                                 @endcan
-
+                                                <td>
                                                 @can('borrar-user')
                                                 {!! Form::open(['method' => 'DELETE', 'route'=> ['usuarios.destroy', $usuario->id], 'style'=>'display:inline']) !!}
                                                     {!! Form::submit('Borrar', ['class'=> 'btn btn-danger']) !!}
                                                 {!! Form::close() !!}
                                                 @endcan
+                                                </td>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                             <div class="pagination justify-content-end">
                                 {!! $usuarios->links() !!}
                             </div>

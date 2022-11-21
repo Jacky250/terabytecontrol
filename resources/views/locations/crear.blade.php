@@ -28,17 +28,19 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <label for="address">Direccion</label>
+                                            <label for="address">Nombre</label>
                                             <input type="text" name="address" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" name="name" style="height: 100px"></textarea>
-                                            <label for="name">Nombre</label>
+                                        <div class="form-group">
+                                            <label for="name">Dirección</label>
+                                            <input type="text" name="name" class="form-control">
+                                           
                                         </div>
-
+                                        
                                     </div>
+                                    
                                     <button type="submit" class="btn btn-primary">Guadar</button>
                                 </div>
 

@@ -27,8 +27,10 @@
                         
                         <a href="{{ route('getfiberloc', $location->id) }}" class="btn btn-warning ">Nuevo</a>
                         @endcan
+                        <div class="table-responsive">
 
-                        <table class=" table table-striped  justify-content mt-2">
+                        
+                        <table class=" table   justify-content mt-2">
                                 <thead style="background-color:#424242">
                                         <th style="display: none;" class="col-lg-12">Id</th>
                                         <th style="color:#fff" >Switch</th>
@@ -36,7 +38,8 @@
                                         <th style="color:#fff">Equipo</th>
                                         <th style="color:#fff">Modelo</th>
                                         <th style="color:#fff">OLT</th>
-                                        <th style="color:#fff">Acciones</th>
+                                        <th style="color:#fff">Editar</th>
+                                        <th style="color:#fff">Eliminar</th>
                                 </thead>
                                 <tbody>
                                 
@@ -55,19 +58,20 @@
                                         @can('editar-fibra')
                                         <a class="btn btn-info" href="{{ route('fibras.edit',$fibra->id) }}">Editar</a>
                                         @endcan
-
+                                        <td>
                                         @csrf
                                         @method('DELETE')
                                         @can('borrar-fibra')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('¿seguro que quieres eliminar {{ $fibra->switch }}?')" >Borrar</button>
                                         @endcan
+                                        </td>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
                                 </tbody>
                         </table>
-                        
+                        </div>
                         </div>
                     </div>
                 </div>
