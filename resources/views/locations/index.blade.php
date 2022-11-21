@@ -27,8 +27,8 @@
                         @can ('crear-local')
                         <a class="btn btn-warning" href="{{ route('locations.create') }}">Nuevo</a>
                         @endcan
-
-                        <table class="table table-striped mt-2 col-lg-12">
+                        <div class="table-responsive">
+                        <table class="table   justify-content mt-2">
                                 <thead style="background-color:#424242">
                                         <th style="display: none;">Id</th>
                                         <th style="color:#fff" >Nombre</th>
@@ -61,7 +61,7 @@
                             @endforeach
                                 </tbody>
                         </table>
-                        
+                        </div>
                         </div>
                     </div>
                 </div>
